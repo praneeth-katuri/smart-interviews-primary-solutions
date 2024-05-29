@@ -1,0 +1,17 @@
+def solution(arr, n):
+    ans = 1
+    for i in range(n):
+        mini = arr[i]
+        maxi = arr[i]
+        for j in range(i+1, n):
+            maxi = max(maxi, arr[j])
+            mini = min(mini, arr[j])
+            if maxi - mini == j - i and (j - i + 1) > ans:
+                ans = j - i + 1
+    return ans
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    arr = list(map(int, input().split()))
+    print(solution(arr, n))
